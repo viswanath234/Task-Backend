@@ -12,11 +12,18 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT || 3001;
 
-let corsOptions: CorsOptions = {
-  origin: "http://example.com",
-};
+app.use(
+  cors({
+    origin: "https://task-frontend-theta-lac.vercel.app",
+    credentials: true,
+  })
+);
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 app.use(express.json());
 app.use(responseFormatter);
